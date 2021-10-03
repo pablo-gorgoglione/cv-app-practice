@@ -1,15 +1,41 @@
 import React from "react";
 
-export default function DateInput() {
+export default function DateInput({
+  styles,
+  dateInput,
+  handleChange,
+  compNameProp,
+}) {
+  const { dateFromInput, dateToInput, checkDateInput } = dateInput;
+  const asd = false;
   return (
-    <div>
+    <div style={styles}>
       <h3>Dates</h3>
-      <label htmlFor="CNInput">Date from</label>
-      <input type="date" id="CNInput" />
-      <label htmlFor="CNInput">Date to</label>
-      <input type="date" id="CNInput" />
-      <label htmlFor="CheckDateInput">On going</label>
-      <input type="checkbox" name="DateInput" id="CheckDateInput" />
+      <label htmlFor="dateFromInput">Date from</label>
+      <input
+        value={dateFromInput}
+        onChange={(e) => handleChange(e, compNameProp)}
+        name="dateFromInput"
+        type="date"
+        id="dateFromInput"
+        disabled={asd}
+      />
+      <label htmlFor="dateToInput">Date to</label>
+      <input
+        value={dateToInput}
+        onChange={(e) => handleChange(e, compNameProp)}
+        name="dateToInput"
+        type="date"
+        id="dateToInput"
+      />
+      <label htmlFor="checkDateInput">On going</label>
+      <input
+        value={checkDateInput}
+        onChange={(e) => handleChange(e, compNameProp)}
+        name="checkDateInput"
+        type="checkbox"
+        id="checkDateInput"
+      />
     </div>
   );
 }
