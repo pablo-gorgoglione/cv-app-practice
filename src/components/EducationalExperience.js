@@ -5,6 +5,7 @@ export default function EducationalExperience({
   practExp,
   styles,
   handleChange,
+  handleDateChange,
 }) {
   const { schoolNameInput, titleInput, dateInput } = practExp;
   const compName = "educationalExperience";
@@ -31,11 +32,12 @@ export default function EducationalExperience({
         <DateInput
           compNameProp={compName}
           dateInput={dateInput}
-          handleChange={handleChange}
+          handleChange={handleDateChange}
         />
         <button
           onClick={(e) => {
             e.preventDefault();
+            console.log(practExp, "  <--test");
           }}
           type="submit"
         >

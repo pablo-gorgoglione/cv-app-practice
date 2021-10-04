@@ -1,7 +1,12 @@
 import React from "react";
 import DateInput from "./DateInput";
 
-export default function PracticalExperience({ eduExp, styles, handleChange }) {
+export default function PracticalExperience({
+  eduExp,
+  styles,
+  handleChange,
+  handleDateChange,
+}) {
   const { companyNameInput, positionTitleInput, mainTasksInput, dateInput } =
     eduExp;
   const compName = "practicalExperience";
@@ -36,8 +41,17 @@ export default function PracticalExperience({ eduExp, styles, handleChange }) {
         <DateInput
           compNameProp={compName}
           dateInput={dateInput}
-          handleChange={handleChange}
+          handleChange={handleDateChange}
         />
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            console.log(eduExp, "  <--test");
+          }}
+          type="submit"
+        >
+          Save
+        </button>
       </form>
     </div>
   );

@@ -50,6 +50,7 @@ export default function GeneralInformation({
         <button
           onClick={(e) => {
             e.preventDefault();
+            console.log(gnralInfo, "  <--test 3");
           }}
           type="submit"
         >
