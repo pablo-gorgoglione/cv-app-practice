@@ -14,19 +14,19 @@ class App extends Component {
         emailInput: "",
         phoneNumberInput: "",
       },
-      practicalExperience: {
-        companyNameInput: "",
-        positionTitleInput: "",
-        mainTasksInput: "",
+      educationalExperience: {
+        schoolNameInput: "",
+        titleInput: "",
         dateInput: {
           dateFromInput: "",
           dateToInput: "",
           checkDateInput: false,
         },
       },
-      educationalExperience: {
-        schoolNameInput: "",
-        titleInput: "",
+      practicalExperience: {
+        companyNameInput: "",
+        positionTitleInput: "",
+        mainTasksInput: "",
         dateInput: {
           dateFromInput: "",
           dateToInput: "",
@@ -41,44 +41,68 @@ class App extends Component {
   //changes on the general component..
   handleChangeGral = (e) => {
     const { name, value } = e.target;
-    this.setState({
+    this.setState((prevState) => ({
       generalInformation: {
-        ...this.state.generalInformation,
+        ...prevState.generalInformation,
         [name]: value,
       },
-    });
+    }));
   };
   //changes on educational and practical component..
   handleInputChange = (e, compName) => {
-    let tempState;
     const { name, value } = e.target;
-    if (compName === "practicalExperience") {
-      tempState = this.state.practicalExperience;
-    } else {
-      tempState = this.state.educationalExperience;
-    }
-    console.log(tempState, "  <-- ??ASD");
-    this.setState({
-      [compName]: {
-        tempState,
-        [name]: value,
-        dateInput: {
-          tempState,
+    if (compName === "educationalExperience") {
+      this.setState((prevState) => ({
+        [compName]: {
+          ...prevState.educationalExperience,
+          [name]: value,
+          dateInput: {
+            ...prevState.educationalExperience.dateInput,
+          },
         },
-      },
-    });
+      }));
+    } else {
+      this.setState((prevState) => ({
+        [compName]: {
+          ...prevState.practicalExperience,
+          [name]: value,
+          dateInput: {
+            ...prevState.practicalExperience.dateInput,
+          },
+        },
+      }));
+    }
   };
   handleDateChange = (e, compName) => {
-    const { name, value } = e.target;
-    this.setState({
-      [compName]: {
-        ...this.state,
-        dateInput: {
-          ...this.state.compName,
-          [name]: value,
+    const { name, value, checked } = e.target;
+    let tempValue;
+    if (name === "checkDateInput") {
+      tempValue = checked;
+    } else {
+      tempValue = value;
+    }
+
+    if (compName === "educationalExperience") {
+      this.setState((prevState) => ({
+        [compName]: {
+          ...prevState.educationalExperience,
+          dateInput: {
+            ...prevState.educationalExperience.dateInput,
+            [name]: tempValue,
+          },
         },
-      },
-    });
+      }));
+    } else {
+      this.setState((prevState) => ({
+        [compName]: {
+          ...prevState.practicalExperience,
+          dateInput: {
+            ...prevState.practicalExperience.dateInput,
+            [name]: tempValue,
+          },
+        },
+      }));
+    }
   };
 
   render() {
@@ -98,13 +122,13 @@ class App extends Component {
         />
         <EducationalExperience
           educationalExperience
-          practExp={educationalExperience}
+          eduExp={educationalExperience}
           styles={haveBorder}
           handleChange={this.handleInputChange}
           handleDateChange={this.handleDateChange}
         />
         <PracticalExperience
-          eduExp={practicalExperience}
+          practExp={practicalExperience}
           styles={haveBorder}
           handleChange={this.handleInputChange}
           handleDateChange={this.handleDateChange}

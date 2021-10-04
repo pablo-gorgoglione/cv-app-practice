@@ -2,13 +2,13 @@ import React from "react";
 import DateInput from "./DateInput";
 
 export default function PracticalExperience({
-  eduExp,
+  practExp,
   styles,
   handleChange,
   handleDateChange,
 }) {
   const { companyNameInput, positionTitleInput, mainTasksInput, dateInput } =
-    eduExp;
+    practExp;
   const compName = "practicalExperience";
   return (
     <div style={styles}>
@@ -46,7 +46,7 @@ export default function PracticalExperience({
         <button
           onClick={(e) => {
             e.preventDefault();
-            console.log(eduExp, "  <--test");
+            console.log(practExp, "  <--test");
           }}
           type="submit"
         >

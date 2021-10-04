@@ -2,12 +2,12 @@ import React from "react";
 import DateInput from "./DateInput";
 
 export default function EducationalExperience({
-  practExp,
+  eduExp,
   styles,
   handleChange,
   handleDateChange,
 }) {
-  const { schoolNameInput, titleInput, dateInput } = practExp;
+  const { schoolNameInput, titleInput, dateInput } = eduExp;
   const compName = "educationalExperience";
   return (
     <div style={styles}>
@@ -37,7 +37,7 @@ export default function EducationalExperience({
         <button
           onClick={(e) => {
             e.preventDefault();
-            console.log(practExp, "  <--test");
+            console.log(eduExp, "  <--test");
           }}
           type="submit"
         >

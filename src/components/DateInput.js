@@ -36,6 +36,15 @@ export default function DateInput({
         type="checkbox"
         id="checkDateInput"
       />
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          console.log(checkDateInput, "  <--test 3");
+        }}
+        type="submit"
+      >
+        Save
+      </button>
     </div>
   );
 }
