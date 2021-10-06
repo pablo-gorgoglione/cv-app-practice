@@ -1,14 +1,24 @@
 import React from "react";
 import DateInput from "./DateInput";
+import Task from "./Task";
 
 export default function PracticalExperience({
   practExp,
   styles,
   handleChange,
   handleDateChange,
+  handleTaskChange,
+  onSubmitTask,
+  handleTaskDelete,
+  handleTaskEdit,
 }) {
-  const { companyNameInput, positionTitleInput, mainTasksInput, dateInput } =
-    practExp;
+  const {
+    companyNameInput,
+    positionTitleInput,
+    mainTasksInput,
+    dateInput,
+    task,
+  } = practExp;
   const compName = "practicalExperience";
   return (
     <div style={styles}>
@@ -30,14 +40,29 @@ export default function PracticalExperience({
           type="text"
           id="positionTitleInput"
         />
-        <label htmlFor="mainTasksInput">Main Tasks</label>
+        <label htmlFor="task">Task: </label>
         <input
-          value={mainTasksInput}
-          onChange={(e) => handleChange(e, compName)}
-          name="mainTasksInput"
+          value={task.text}
+          onChange={handleTaskChange}
+          name="task"
           type="text"
-          id="mainTasksInput"
+          id="task"
         />
+        <button onClick={onSubmitTask}>Add</button>
+
+        <h3>Main Tasks</h3>
+        <p>(max 5)</p>
+        <ul>
+          {mainTasksInput.map((t) => {
+            return (
+              <Task
+                task={t}
+                handleDelete={handleTaskDelete}
+                handleEdit={handleTaskEdit}
+              />
+            );
+          })}
+        </ul>
         <DateInput
           compNameProp={compName}
           dateInput={dateInput}
