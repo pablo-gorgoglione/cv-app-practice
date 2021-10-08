@@ -27,7 +27,7 @@ export default function Task({ task, handleDelete, handleEdit }) {
       >
         Delete
       </button>
-      <button onClick={openEdit}> {edit ? "Submit" : "Edit"}</button>
+      <button onClick={openEdit}> {edit ? "Save" : "Edit"}</button>
       {edit === true && (
         <input onChange={editTextHandler} type="text" value={inputText} />
       )}

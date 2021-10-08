@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import uniqid from "uniqid";
-import GeneralInformation from "./components/GeneralInformation";
-import PracticalExperience from "./components/PracticalExperience";
-import EducationalExperience from "./components/EducationalExperience";
 import ViewComponent from "./components/ViewComponent";
+import InputComponent from "./components/InputComponent";
 
 class App extends Component {
   constructor() {
@@ -89,7 +87,6 @@ class App extends Component {
         },
       }));
     }
-    console.log(this.state.practicalExperience, "  <--test");
   };
   //changes on the dates of practical and educational
   handleDateChange = (e, compName) => {
@@ -217,37 +214,28 @@ class App extends Component {
     return (
       <div className="App" styles={haveBorder}>
         <header>CV-Creator</header>
-        <GeneralInformation
-          gnralInfo={generalInformation}
-          styles={haveBorder}
-          handleChange={this.handleChangeGral}
-        />
-        <EducationalExperience
-          educationalExperience
-          eduExp={educationalExperience}
-          styles={haveBorder}
-          handleChange={this.handleInputChange}
-          handleDateChange={this.handleDateChange}
-        />
-        <PracticalExperience
-          practExp={practicalExperience}
-          styles={haveBorder}
-          handleChange={this.handleInputChange}
-          handleDateChange={this.handleDateChange}
-          onSubmitTask={this.onSubmitTask}
-          handleTaskChange={this.handleChangeTask}
-          handleTaskDelete={this.handleTaskDelete}
-          handleTaskEdit={this.handleTaskEdit}
-        />
-        <div style={haveBorder}>
-          <button onClick={this.handleSubmitClick}>Submit</button>
-          <button>Edit</button>
-        </div>
-
         {returnTheView && (
-          <div className="viewDiv">
-            <ViewComponent content={this.state} styles={haveBorder} />
-          </div>
+          <button onClick={this.handleSubmitClick}>EDIT</button>
+        )}
+        {returnTheView ? (
+          <ViewComponent content={this.state} styles={haveBorder} />
+        ) : (
+          <InputComponent
+            gnralInfo={generalInformation}
+            practExp={practicalExperience}
+            eduExp={educationalExperience}
+            handleChange={this.handleInputChange}
+            handleChangeGral={this.handleChangeGral}
+            handleDateChange={this.handleDateChange}
+            handleTaskChange={this.handleChangeTask}
+            handleTaskDelete={this.handleTaskDelete}
+            handleTaskEdit={this.handleTaskEdit}
+            onSubmitTask={this.onSubmitTask}
+            styles={haveBorder}
+          />
+        )}
+        {!returnTheView && (
+          <button onClick={this.handleSubmitClick}>Preview</button>
         )}
       </div>
     );

@@ -34,15 +34,6 @@ export default function EducationalExperience({
           dateInput={dateInput}
           handleChange={handleDateChange}
         />
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            console.log(eduExp, "  <--test");
-          }}
-          type="submit"
-        >
-          Save
-        </button>
       </form>
     </div>
   );

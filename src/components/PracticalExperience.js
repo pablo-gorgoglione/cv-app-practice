@@ -20,6 +20,7 @@ export default function PracticalExperience({
     task,
   } = practExp;
   const compName = "practicalExperience";
+
   return (
     <div style={styles}>
       <h2>Practical Experience</h2>
@@ -48,8 +49,15 @@ export default function PracticalExperience({
           type="text"
           id="task"
         />
-        <button onClick={onSubmitTask}>Add</button>
-
+        {mainTasksInput.length >= 5 ? (
+          <button onClick={onSubmitTask} disabled={true}>
+            Add
+          </button>
+        ) : (
+          <button onClick={onSubmitTask} disabled={!task.text}>
+            Add
+          </button>
+        )}
         <h3>Main Tasks</h3>
         <p>(max 5)</p>
         <ul>
@@ -68,15 +76,6 @@ export default function PracticalExperience({
           dateInput={dateInput}
           handleChange={handleDateChange}
         />
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            console.log(practExp, "  <--test");
-          }}
-          type="submit"
-        >
-          Save
-        </button>
       </form>
     </div>
   );

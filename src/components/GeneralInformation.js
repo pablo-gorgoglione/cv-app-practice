@@ -6,7 +6,6 @@ export default function GeneralInformation({
   handleChange,
 }) {
   const { nameInput, lastNameInput, emailInput, phoneNumberInput } = gnralInfo;
-  const compName = "generalInformation";
   return (
     <div className="GeneralInfo" style={styles}>
       <form>
@@ -14,48 +13,35 @@ export default function GeneralInformation({
         <label htmlFor="nameInput">Name</label>
         <input
           value={nameInput}
-          onChange={(e) => handleChange(e, compName)}
+          onChange={(e) => handleChange(e)}
           type="text"
           id="nameInput"
           name="nameInput"
-          required={true}
         />
         <label htmlFor="lastNameInput">Last Name</label>
         <input
           value={lastNameInput}
-          onChange={(e) => handleChange(e, compName)}
+          onChange={(e) => handleChange(e)}
           type="text"
           id="lastNameInput"
           name="lastNameInput"
-          required
         />
         <label htmlFor="emailInput">Email</label>
         <input
           value={emailInput}
-          onChange={(e) => handleChange(e, compName)}
-          type="email"
+          onChange={(e) => handleChange(e)}
+          type="text"
           id="emailInput"
           name="emailInput"
-          required
         />
         <label htmlFor="phoneNumberInput">Phone number</label>
         <input
           value={phoneNumberInput}
-          onChange={(e) => handleChange(e, compName)}
+          onChange={(e) => handleChange(e)}
           type="text"
           id="phoneNumberInput"
           name="phoneNumberInput"
-          required
         />
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            console.log(gnralInfo, "  <--test 3");
-          }}
-          type="submit"
-        >
-          Save
-        </button>
       </form>
     </div>
   );

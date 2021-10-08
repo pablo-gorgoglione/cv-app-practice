@@ -7,7 +7,6 @@ export default function DateInput({
   compNameProp,
 }) {
   const { dateFromInput, dateToInput, checkDateInput } = dateInput;
-  const asd = false;
   return (
     <div style={styles}>
       <h3>Dates</h3>
@@ -18,7 +17,7 @@ export default function DateInput({
         name="dateFromInput"
         type="date"
         id="dateFromInput"
-        disabled={asd}
+        disabled={checkDateInput}
       />
       <label htmlFor="dateToInput">Date to</label>
       <input
@@ -27,6 +26,7 @@ export default function DateInput({
         name="dateToInput"
         type="date"
         id="dateToInput"
+        disabled={checkDateInput}
       />
       <label htmlFor="checkDateInput">On going</label>
       <input
@@ -36,15 +36,6 @@ export default function DateInput({
         type="checkbox"
         id="checkDateInput"
       />
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          console.log(checkDateInput, "  <--test 3");
-        }}
-        type="submit"
-      >
-        Save
-      </button>
     </div>
   );
 }
