@@ -6,6 +6,9 @@ export default function EducationalExperience({
   styles,
   handleChange,
   handleDateChange,
+  addEdu,
+  editEdu,
+  deleteEdu,
 }) {
   const { schoolNameInput, titleInput, dateInput } = eduExp;
   const compName = "educationalExperience";
@@ -29,12 +32,16 @@ export default function EducationalExperience({
           id="titleInput"
           name="titleInput"
         />
+
         <DateInput
           compNameProp={compName}
           dateInput={dateInput}
           handleChange={handleDateChange}
         />
       </form>
+
+      <button onClick={editEdu}> Save</button>
+      <button onClick={deleteEdu}> Delete</button>
     </div>
   );
 }

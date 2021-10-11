@@ -17,7 +17,7 @@ export default function Task({ task, handleDelete, handleEdit }) {
   };
 
   return (
-    <li key={id}>
+    <li>
       {text}
       <button
         onClick={(e) => {

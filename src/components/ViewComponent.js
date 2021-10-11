@@ -1,13 +1,9 @@
 import React from "react";
 
-export default function ViewComponent({ content, styles }) {
-  const { generalInformation, educationalExperience, practicalExperience } =
-    content;
+export default function ViewComponent({ gnralInfo, practExp, eduExp, styles }) {
+  const { nameInput, lastNameInput, emailInput, phoneNumberInput } = gnralInfo;
 
-  const { nameInput, lastNameInput, emailInput, phoneNumberInput } =
-    generalInformation;
-
-  const {
+  /* const {
     schoolNameInput,
     titleInput,
     dateInput: dateEdu,
@@ -18,7 +14,7 @@ export default function ViewComponent({ content, styles }) {
     positionTitleInput,
     mainTasksInput,
     dateInput: dateExp,
-  } = practicalExperience;
+  } = practicalExperience; */
 
   return (
     <div style={styles}>
@@ -27,18 +23,10 @@ export default function ViewComponent({ content, styles }) {
         Full name : {nameInput} {lastNameInput}
       </h3>
 
-      <h4>Educational Experience</h4>
-      <p> School Name: {schoolNameInput}</p>
-      <p> Title Name: {titleInput}</p>
-      {dateEdu.checkDateInput ? (
-        <p> Dates: On going</p>
-      ) : (
-        <div>
-          <p> Date from: {dateEdu.dateFromInput}</p>
-          <p>Date to: {dateEdu.dateToInput}</p>
-        </div>
-      )}
-      <h4>Practical Experience</h4>
+      {eduExp.map((edu) => {
+        return <Educa ed={edu} />;
+      })}
+      {/* <h4>Practical Experience</h4>
       <p>Company Name: {companyNameInput}</p>
       <p>Position Title: {positionTitleInput}</p>
       <p>Main task of the job:</p>
@@ -57,7 +45,25 @@ export default function ViewComponent({ content, styles }) {
       )}
       <h4>Contact</h4>
       <p> Email: {emailInput}</p>
-      <p>Tel: {phoneNumberInput}</p>
+      <p>Tel: {phoneNumberInput}</p> */}
     </div>
   );
 }
+
+const Educa = ({ ed }) => {
+  return (
+    <div>
+      <h4>Educational Experience</h4>
+      <p> School Name: {ed.schoolNameInput}</p>
+      <p> Title Name: {ed.titleInput}</p>
+      {ed.dateInput.checkDateInput ? (
+        <p> Dates: On going</p>
+      ) : (
+        <div>
+          <p> Date from: {ed.dateInput.dateFromInput}</p>
+          <p>Date to: {ed.dateInput.dateToInput}</p>
+        </div>
+      )}
+    </div>
+  );
+};

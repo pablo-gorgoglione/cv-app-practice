@@ -11,6 +11,9 @@ export default function PracticalExperience({
   onSubmitTask,
   handleTaskDelete,
   handleTaskEdit,
+  savePract,
+  addPract,
+  deletePract,
 }) {
   const {
     companyNameInput,
@@ -32,6 +35,7 @@ export default function PracticalExperience({
           name="companyNameInput"
           type="text"
           id="companyNameInput"
+          required
         />
         <label htmlFor="positionTitleInput">Position Title</label>
         <input
@@ -64,6 +68,7 @@ export default function PracticalExperience({
           {mainTasksInput.map((t) => {
             return (
               <Task
+                key={t.id}
                 task={t}
                 handleDelete={handleTaskDelete}
                 handleEdit={handleTaskEdit}
@@ -77,6 +82,8 @@ export default function PracticalExperience({
           handleChange={handleDateChange}
         />
       </form>
+      <button onClick={savePract}>Save</button>
+      <button onClick={deletePract}>Delete</button>
     </div>
   );
 }

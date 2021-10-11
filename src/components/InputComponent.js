@@ -14,8 +14,23 @@ export default function InputComponent({
   handleTaskDelete,
   handleTaskEdit,
   onSubmitTask,
+  editEducationals,
+  addEdu,
+  editEdu,
+  deleteEdu,
+  educationals,
+  savePract,
+  addPract,
+  deletePract,
+  movePract,
+  practicals,
+
   styles,
 }) {
+  const testeando = () => {
+    console.log(educationals);
+  };
+
   return (
     <div>
       <GeneralInformation
@@ -29,7 +44,29 @@ export default function InputComponent({
         styles={styles}
         handleChange={handleChange}
         handleDateChange={handleDateChange}
+        addEdu={addEdu}
+        editEdu={editEdu}
+        deleteEdu={deleteEdu}
       />
+      <div>
+        {educationals.map((e, index) => {
+          return (
+            <button key={index} onClick={() => editEducationals(index)}>
+              {index + 1}
+            </button>
+          );
+        })}
+        {educationals.length >= 5 ? (
+          <button onClick={addEdu} disabled={true}>
+            Add
+          </button>
+        ) : (
+          <button onClick={addEdu} disabled={false}>
+            Add
+          </button>
+        )}
+      </div>
+
       <PracticalExperience
         practExp={practExp}
         styles={styles}
@@ -39,7 +76,29 @@ export default function InputComponent({
         handleTaskChange={handleTaskChange}
         handleTaskDelete={handleTaskDelete}
         handleTaskEdit={handleTaskEdit}
+        savePract={savePract}
+        addPract={addPract}
+        deletePract={deletePract}
+        //movePract={movePract}
       />
+      <div>
+        {practicals.map((e, index) => {
+          return (
+            <button key={index} onClick={() => movePract(index)}>
+              {index + 1}
+            </button>
+          );
+        })}
+        {practicals.length >= 5 ? (
+          <button onClick={addPract} disabled={true}>
+            Add
+          </button>
+        ) : (
+          <button onClick={addPract} disabled={false}>
+            Add
+          </button>
+        )}
+      </div>
     </div>
   );
 }
